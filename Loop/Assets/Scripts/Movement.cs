@@ -6,6 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public GameObject player;
+    public GameObject cameraObj;
     public Vector3 startPos;
     public float defaultSpeed;
 
@@ -25,28 +26,29 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player.transform.Rotate(new Vector3(0, cameraObj.transform.localRotation.y, 0), Space.Self);
         // Forward
         if (Input.GetKey(KeyCode.W))
         {
-            z += speed * Time.deltaTime;
+            player.transform.position += player.transform.forward * speed * Time.deltaTime;
         }
 
         // Left
         if (Input.GetKey(KeyCode.A))
         {
-            x -= speed * Time.deltaTime;
+            player.transform.position -= player.transform.right * speed * Time.deltaTime;
         }
 
         // Backward
         if (Input.GetKey(KeyCode.S))
         {
-            z -= speed * Time.deltaTime;
+            player.transform.position -= player.transform.forward * speed * Time.deltaTime;
         }
 
         // Right
         if (Input.GetKey(KeyCode.D))
         {
-            x += speed * Time.deltaTime;
+            player.transform.position += player.transform.right * speed * Time.deltaTime;
         }
 
         // Sprint
@@ -59,6 +61,6 @@ public class Movement : MonoBehaviour
             speed = defaultSpeed;
         }
 
-        player.transform.position = new Vector3(x, y, z);
+        //player.transform.position = new Vector3(x, y, z);
     }
 }

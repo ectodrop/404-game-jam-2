@@ -6,9 +6,9 @@ public class PlayerMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public float sensX;
-    public float sensY;
+    public float sensZ;
 
-    public Transform orientation;
+    //public Transform orientation;
     float xRotation;
     float yRotation;
 
@@ -20,13 +20,13 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensZ;
 
         yRotation += mouseX;
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        //orientation.rotation = Quaternion.Euler(0, zRotation, 0);
 
     }
 }
