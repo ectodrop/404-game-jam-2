@@ -8,7 +8,7 @@ public class TimeController : MonoBehaviour, Timer
 {
     public TextMeshProUGUI timerText;
     public float time = 30.0f;
-
+    public AudioSource endTimeSound;
     private bool resetting;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class TimeController : MonoBehaviour, Timer
         {
             time = 0f;
             resetting = true;
+            endTimeSound.Play();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         var timeString = time.ToString("N2").Split(".");

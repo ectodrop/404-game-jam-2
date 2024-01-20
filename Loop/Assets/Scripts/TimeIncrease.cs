@@ -7,13 +7,14 @@ public class TimeINcrease : MonoBehaviour
 {
 
     [SerializeField] public TimeController timer;
-
+    public AudioSource collectSound;
     [SerializeField] float amountTimeIncrease = 10f;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            collectSound.Play();
             Destroy(gameObject);
             float currentTime = timer.GetTime();
             Debug.Log("current time limit: " + currentTime);
