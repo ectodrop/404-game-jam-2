@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TimeINcrease : MonoBehaviour
 {
 
-    public Timer timer;
+    [SerializeField] public TimeController timer;
 
     [SerializeField] float amountTimeIncrease = 10f;
 
     void OnTriggerEnter(Collider other)
     {
-        float currentTime = timer.GetTime();
-        Debug.Log("current time limit: " + currentTime);
+        if (other.tag == "Player")
+        {
+            Destroy(gameObject);
+            float currentTime = timer.GetTime();
+            Debug.Log("current time limit: " + currentTime);
 
-        timer.SetTime(currentTime + amountTimeIncrease);
-        Debug.Log("new time limit: " + timer.GetTime());
+            timer.SetTime(currentTime + amountTimeIncrease);
+            Debug.Log("new time limit: " + timer.GetTime());
+        }
     }
 }
