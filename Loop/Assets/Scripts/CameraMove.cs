@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public float sensX;
-    public float sensZ;
+    public float sensY;
 
     //public Transform orientation;
     float xRotation;
@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensZ;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
         yRotation += mouseX;
         xRotation -= mouseY;

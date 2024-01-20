@@ -26,29 +26,28 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player.transform.Rotate(new Vector3(0, cameraObj.transform.localRotation.y, 0), Space.Self);
         // Forward
         if (Input.GetKey(KeyCode.W))
         {
-            player.transform.position += player.transform.forward * speed * Time.deltaTime;
+            player.transform.position += cameraObj.transform.forward * speed * Time.deltaTime;
         }
 
         // Left
         if (Input.GetKey(KeyCode.A))
         {
-            player.transform.position -= player.transform.right * speed * Time.deltaTime;
+            player.transform.position -= cameraObj.transform.right * speed * Time.deltaTime;
         }
 
         // Backward
         if (Input.GetKey(KeyCode.S))
         {
-            player.transform.position -= player.transform.forward * speed * Time.deltaTime;
+            player.transform.position -= cameraObj.transform.forward * speed * Time.deltaTime;
         }
 
         // Right
         if (Input.GetKey(KeyCode.D))
         {
-            player.transform.position += player.transform.right * speed * Time.deltaTime;
+            player.transform.position += cameraObj.transform.right * speed * Time.deltaTime;
         }
 
         // Sprint
@@ -60,7 +59,5 @@ public class Movement : MonoBehaviour
         {
             speed = defaultSpeed;
         }
-
-        //player.transform.position = new Vector3(x, y, z);
     }
 }
